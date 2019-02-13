@@ -2,7 +2,7 @@
 
 I got my first 360 camera to record a [vlog about making the exoskeleton from Elysium](https://hackaday.io/project/19830-elysium-max-exoskeleton), but quickly realized the medium's potential and set out to capture as many experiences as possible.
 
-To complete my first professional project, a [45-minute show of my favorite local band](https://www.facebook.com/vnovytskyy/videos/10211691765842819/), I had to build a 360 video pipeline along with a render farm. I hope that this article can save you some trouble when processing 360 video.
+To complete my first project, a 45-minute show of my favorite local band, I had to build a 360 video pipeline along with a render farm.
 
 ## Overview
 
