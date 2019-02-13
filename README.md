@@ -261,7 +261,7 @@ I import both transcoding passes into project bins labeled `transcode 5.2K` and 
 
 360 videos cannot be posted on Instagram or displayed on some older computers, so sometimes I render a regular HD video from the first transcoding pass. If it's for instagram, it only needs to be 30 seconds long.
 
-To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and a 2D Edit where the titles were animated in the first place. If the titles where 3D, I have to duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
+To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and a 2D Edit where the titles were animated in the first place. If the titles were 3D, I have to duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
 
 I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, and choose a better camera rotation if necessary, since viewers will no longer be able to rotate the camera. The 2D titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in as I used in the second transcode pass, but this time to a 2D composition. I use the Facebook HD preset (1920x1080O) to encode the final flat video.
 
