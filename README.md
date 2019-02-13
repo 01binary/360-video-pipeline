@@ -2,7 +2,7 @@
 
 I got my first 360 camera to record a [vlog about making the exoskeleton from Elysium](https://hackaday.io/project/19830-elysium-max-exoskeleton), but quickly realized the medium's potential and set out to capture as many experiences as possible.
 
-To complete my first stereoscopic project in high resolution, a [45-minute show of my favorite local band](https://www.facebook.com/vnovytskyy/videos/10211691765842819/), I had to build a 360 video pipeline along with a render farm. I hope that this article can save you some trouble when processing 360 video.
+To complete my first professional project, a [45-minute show of my favorite local band](https://www.facebook.com/vnovytskyy/videos/10211691765842819/), I had to build a 360 video pipeline along with a render farm. I hope that this article can save you some trouble when processing 360 video.
 
 ## Overview
 
@@ -19,9 +19,9 @@ To complete my first stereoscopic project in high resolution, a [45-minute show 
 
 ## Equipment
 
-I use Insta 360 Pro I with an external SSD and battery. I leave the stock battery and a memory card inside the camera so I can switch to them if the external ones fail.
+I use [Insta 360 Pro I](https://www.insta360.com/product/insta360-pro) with an [external SSD](https://www.amazon.com/gp/product/B073H552FJ/ref=ppx_yo_dt_b_asin_title_o02__o00_s00) and [battery](https://www.amazon.com/gp/product/B016BJCRUO/ref=oh_aui_search_asin_title). I leave the stock battery and a memory card inside the camera so I can switch to them if the external ones fail.
 
-The onboard mic cannot handle the loudness and dynamic range of a real performance so I supplement the sound with an external stereo sound recorder and the audio from the venue board recorded on to a USB drive.
+The onboard mic cannot handle the loudness and dynamic range of a real performance so I supplement the sound with an [external stereo sound recorder](https://www.amazon.com/gp/product/B07B4KFQW7/ref=oh_aui_search_asin_title) and the audio from the venue board recorded on to a USB drive.
 
 ## Pre-flight
 
@@ -48,7 +48,7 @@ I follow this checklist to setup at the venue:
 
 ### Camera Settings
 
-I use the following settings for Insta 360 Pro I in Video mode:
+I use the following settings for Insta 360 Pro in Video mode:
 
 |Setting|Value|
 |-------|-----|
@@ -73,7 +73,7 @@ I use the following settings for Insta 360 Pro I in Video mode:
 
 ## Stitch Settings
 
-I use the Insta360 Stitcher with the following settings:
+I use the [Insta360 Stitcher](https://www.insta360.com/download/insta360-pro) with the following settings:
 
 |Setting|Value|
 |-------|-----|
@@ -110,28 +110,28 @@ After starting the batch stitching process I switch tabs to "Pro 2 File Manager"
 
 I use Adobe Premiere Pro because I also need Photoshop and Illustrator so it's more cost efficient to use everything from Creative Cloud.
 
-* Create a new Premiere Pro project.
+* Create a new Premiere project.
 * Import stitched footage and place into `stitch` bin.
 * Create a new sequence from this footage.
 * Clip the footage to the exact beginning of the performance, and leave a few seconds after the performance to capture applause and the performer(s) thanking the audience.
 
-I never cut in the middle when recording performances, unless it's a reel for Instagram - see Encoding Flat Video section for more information about that.
+I never cut in the middle when recording performances, unless it's a reel for Instagram - see **Encoding Flat Video** section for more information about that.
 
 ## Mixing and Mastering Audio
 
-I work on the sound next as any performance should be enjoyable just by listening to it like it was on a radio:
+I work on the sound next as any performance should be enjoyable just by listening like it was on a radio:
 
 * Import audio from the external recorder into the `audio` bin and call it `ambient`.
 * Import audio from the board into the `audio` bin and call it `board`.
-* Place imported audio tracks into the stitch sequence.
-* Sync imported audio tracks to audio from the camera's onboard mic by using the Premiere Pro sync audio feature, or manually if that doesn't work. See [Synchronize clips in the Timeline panel](https://helpx.adobe.com/premiere-pro/using/synchronizing-audio-video-merge-clips.html#Merge%20clips%20in%20the%20Project%20panel).
+* Place imported audio tracks into the `stitch` sequence.
+* Sync imported audio tracks to audio from the camera's onboard mic by using the Premiere sync audio feature, or manually if that doesn't work. See [Synchronize clips in the Timeline panel](https://helpx.adobe.com/premiere-pro/using/synchronizing-audio-video-merge-clips.html#Merge%20clips%20in%20the%20Project%20panel).
 * Mute the camera audio track.
-* Mix the external audio sources, if more than one. If the audio from the board sounds great, the ambient mic recording can be discarded.
+* Mix the external audio sources.
 * Apply fade automation to the beginning and end of the video by using Easing curves, and add any necessary cross-fades between audio sources.
-* Apply one or more multi-band compressors if necessary to repair a mix with a bad spectrum balance.
+* Apply multi-band compressors if necessary to repair a mix with a bad spectrum balance.
 * Apply a loudness maximizer if necessary, and choose a setting to maximize left/right channels independently to ensure both channels are balanced in volume.
-* Apply a brickwall limiter to the entire audio track at -4 dB. The AAC audio codec that will be used for the final video works best when the audio does not peak too close to 0 dB.
-* Render audio for the entire sequence and import back into the project, also placing into the "audio" bin.
+* Apply a brickwall limiter to the entire audio track at `-4 dB`. The AAC audio codec that will be used for the final video works best when the audio does not peak too close to `0 dB`.
+* Render audio for the entire sequence and import back into the project, also placing into the `audio` bin as `render`.
 
 See [Premiere Pro audio plug-ins](https://helpx.adobe.com/premiere-pro/using/audio-effects-transitions.html) reference for more information.
 
@@ -155,7 +155,7 @@ I shoot in flat color mode with neutral settings to retain detail in colors and 
 
 When this information is retained, applying a curve during color grading lets you re-distribute shadows and highlights and apply your own limiting to cut off values that contain more noise and retain values with detail.
 
-I use the [Lumetri Color plug-in](https://helpx.adobe.com/premiere-pro/using/color-workflows.html) for color grading and toggle the following transforms in different combinations to determine if they are needed, comparing side-by-side:
+I use the [Lumetri Color plug-in](https://helpx.adobe.com/premiere-pro/using/color-workflows.html) for color grading and toggle the following transforms in different combinations to determine if they are needed:
 
 * **Exposure**: This can be pushed to increase the richness of shadows, but then it would require more de-noising which blurs details.
 * **Contrast**: This can be used along with Curves to tune the overall contrast. It adds an S-curve over the entire spectrum, with the sharpness of the "S" controlled with this slider. That extra curve is then mixed in with the master Curve.
@@ -196,9 +196,9 @@ This pass applies a de-noising algorithm and reduces the resolution down to 4K.
 
 I use either [Red Giant Denoiser III](https://www.redgiant.com/products/magic-bullet-denoiser) which has a built-in re-sharpening pass, or a combination of [Neat Video Reduce Noise](https://www.neatvideo.com/) and [Boris FX VR Sharpen](https://borisfx.com/effects/continuum-vr-sharpen-1/).
 
-When using **Denoiser III** plug-in, I often turn off the re-sharpening pass and set other settings lower to reduce noise on light halos and make everything look smoother without increasing noise. If the video was well lit I can usually get away with a small amount of re-sharpening.
+When using the **Denoiser III** plug-in, I often turn off the re-sharpening pass and set other settings lower to reduce noise on light halos and make everything look smoother without increasing noise. If the video was well lit I can usually get away with a small amount of re-sharpening.
 
-When using **Neat Video** plug-in, I select an area with the most noise and use the automatic profile analysis to let the plug-in decide what to do. The results are always great, although this plug-in often takes more time to process than Denoiser III. When possible, I apply a re-sharpening pass with **Boris FX VR Sharpen**.
+When using the **Neat Video** plug-in, I select an area with the most noise and use the automatic profile analysis to let the plug-in decide what to do. The results are always great, although this plug-in often takes more time to process than Denoiser III. When possible, I apply a re-sharpening pass with **Boris FX VR Sharpen**.
 
 ### Re-sampling
 
@@ -224,15 +224,18 @@ AfterEffects comes with a [VR Comp Editor plug-in](https://www.premiumbeat.com/b
 
 I have a few simple rules for animating 2D titles with AfterEffects:
 * Use carefully picked fonts that enhance the artist's branding, or find the font they are already using. I spend a lot of time searching [FontFabric](https://www.fontfabric.com/), [MyFonts](https://www.myfonts.com/), and [Creative Market](https://creativemarket.com/) for quality fonts so that I don't have to struggle at this stage.
-* Stay within the square safe area displayed in Adobe Premiere VR mode. This will end up being the cropping area when the video is shown in a Facebook post.
+* Stay within the square safe area displayed in Premiere VR mode. This will become the cropping area when the video is shown in a Facebook post.
 * Use cubic easing curves with extreme "ease" toward the end of the motion range to create a feeling of luxury. When something moves slow, it has a lot of time. Time is a resource, therefore that which moves slow is "rich" in that resource, creating a feeling of luxury.
-* Prefer a small range of movement combined with a large range of fading to accentuate the extreme easing. This is inspired by a trendy web animation style on sites like Dribbble and UpLabs.
+* Prefer a small range of movement combined with a large range of fading to accentuate the extreme easing.
 * Use vector masking effects, like drawing a rectangular or custom-shaped mask around each letter and animating each mask to have the letters appear in sequence.
 * Use blending effects, by duplicating the text several times and setting a different blending mode on each copy.
 * Use raster masking effects, like taking a portion of footage from a random time and place in the video, masking it by the shape of the text, and scrolling it through the text with a blending mode that produces a nice effect. I often create several layers of this, scrolling different parts of the footage and various time ranges through the text, each with a different blending mode.
-* Lastly, if I can find any existing branding elements for the artist or the vanue (logos, accents, borders) I extract them from their backgrounds in Photoshop and bring them into AfterEffects to add animation and blending effects.
+* Lastly, if I can find any existing branding elements for the artist I extract them from the background in Photoshop and bring them into AfterEffects to add animation and blending effects.
 
 I worked on 2D titles for the following videos:
+* [Soriah - Star Theater](https://www.facebook.com/vnovytskyy/videos/10212159917706323/)
+* [David Yow - Star Theater](https://www.facebook.com/vnovytskyy/videos/10212136093870742/)
+* [TaelorFX - House of Shadows](https://www.facebook.com/vnovytskyy/videos/10211345263140468/)
 
 ### 3D Titles
 
@@ -258,10 +261,11 @@ I worked on 3D titles for the following videos:
 * [Dead Animal Assembly Plant - Halloween show](https://www.facebook.com/vnovytskyy/videos/10211691765842819/)
 * [Apophis Theory - Paris Theater show](https://www.facebook.com/vnovytskyy/videos/10210737464745888/)
 * [TaelorFX - RAW artist showcase](https://www.facebook.com/vnovytskyy/videos/10211836572822903/)
+* [Adventuredness - Intro](https://www.facebook.com/vnovytskyy/videos/10212068685265569/)
 
 ## Encoding 360 Video
 
-I import both transcoding passes into project bins labeled `transcode 5.2K` and `transcode 4K` and create the `final` sequence from the second transcode. Then I add the previously rendered audio and layer the titles over the first 7-10 seconds of the video. I also add any additional fading and effects to blend the titles into the video, and fade the video out at the end (or use some other VR effects to glitch it into nothing).
+I import both transcoding passes into project bins labeled `transcode 5.2K` and `transcode 4K` and create the `final` sequence from the second transcode. Then I add the previously rendered audio and layer the titles (imported into `titles` bin as `titles-360`) over the first 7-10 seconds of the video. I also add any additional fading and effects to blend the titles into the video and fade the video out at the end.
 
 |Setting|Value|
 |-------|-----|
@@ -284,11 +288,15 @@ I import both transcoding passes into project bins labeled `transcode 5.2K` and 
 
 ## Encoding Flat Video
 
-360 videos cannot be posted on Instagram or displayed on some older computers, so sometimes I render a regular HD video from the first transcoding pass. If it's for instagram, it only needs to be 30 seconds long.
+360 videos cannot be posted on Instagram or displayed in older browsers, so sometimes I render a flat HD video from the first transcoding pass.
 
-To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and a 2D Edit where the titles were animated in the first place. If the titles were 3D, I have to duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
+To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and the original 2D Edit from AfterEffects where the titles were animated.
 
-I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, and choose a better camera rotation if necessary, since viewers will no longer be able to rotate the camera. The 2D titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in as I used in the second transcode pass, but this time to a 2D composition. I use the Facebook HD preset (1920x1080O) to encode the final flat video.
+If the titles were 3D, I duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
+
+I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, and choose a better camera rotation if necessary, since viewers will no longer be able to rotate the camera.
+
+The titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in(s) as I used in the second transcoding pass, but this time to a 2D composition. I use the Facebook HD preset (1920x1080O) to encode the final flat video.
 
 |Setting|Value|
 |-------|-----|
@@ -305,10 +313,6 @@ I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, 
 |Target Bitrate|12 Mbps|
 |Maximum Bitrate|16 Mbps|
 |Render at Maximum Depth|on|
-|Video is VR|on|
-|Frame Layout|Monoscopic|
-|Horizontal Field of View|360|
-|Vertical Field of View|180|
 |Use Maximum Render Quality|off|
 
 ## Uploading
@@ -328,6 +332,7 @@ See [Facebook 360 video requirements](https://www.facebook.com/help/828417127257
 |Audio Codec|AAC|
 |Video Bitrate (4K)|45 Mbps|
 |Audio Bitrate (Stereo)|128 kbps|
+|Recommended Length|Up to 30 minutes|
 
 ### YouTube
 
@@ -341,13 +346,29 @@ See [YouTube 360 video requirements](https://support.google.com/youtube/answer/6
 |Audio Codec|AAC-LC|
 |Video Bitrate (4K)|35-45 Mbps|
 |Audio Bitrate (Stereo)|128 Kbps, 384 kbps|
+|Recommended Length|Up to 30 minutes|
 
 ### Google Drive
 
-See [Google Drive free storage limits](https://support.google.com/a/answer/172541?hl=en). You can store up to 15 GB for free, which is about 50 minutes of 4K 360 video.
+See [Google Drive free storage limits](https://support.google.com/a/answer/172541?hl=en). You can store up to `15 GB` for free, which is about `50 minutes` of 4K 360 video.
 
 Also see [steps for sharing files publically](https://www.appypie.com/faqs/how-can-i-make-my-google-drive-document-public).
 
 ## Building a Render Farm
 
-## Equipment List
+Working with 8K footage and using de-noising plug-ins requires a computer with high CPU, memory, and storage speeds, in addition to memory and drive space.
+
+At the time of writing this article, the fastest iMac Pro was slower than the fastest Windows workstation, so I built the best over-clocked Windows machine I could.
+
+|Spec|Choice|
+|----|------|
+|CPU||
+|Motherboard||
+|Memory||
+|HD1 (Transcoding)||
+|HD2 (Transcoding)||
+|HD3 (Cache)||
+|HD4 (System)||
+|Power Supply||
+|Heat Sink||
+|Case||
