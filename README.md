@@ -1,8 +1,8 @@
-# 360 Video Pipeline
+# My 360 Video Pipeline
 
 I got my first 360 camera to record a vlog about making the exoskeleton from Elysium, but quickly realized the medium's potential and set out to capture as many experiences as possible.
 
-To complete my first project, a 45-minute show of my favorite local band, I had to build a 360 video pipeline along with a render farm. I hope that this article can help other 360 videographers improve their delivery pipeline.
+To complete my first project, a 45-minute show of my favorite local band, I had to build a 360 video pipeline along with a render farm. I hope that this article can save you some trouble when building your own 360 video pipeline.
 
 ## Overview
 
@@ -140,13 +140,13 @@ In this pass I perform color grading, rotate the camera, and re-sample the resul
 
 ### Color Grading
 
-When using the **camera settings** listed in the previous section (Brightness 0, Contrast 64) color grading is not required unless the Contrast is reduced to a lower value. A slight increase in Vibrance is enough in most cases.
+When using the **camera settings** listed in the previous section, advanced color grading is not required unless the Contrast is reduced to a lower value. A slight increase in Vibrance is enough in most cases.
 
 I shoot in Flat Color mode with neutral settings to retain detail in colors and shadows. If a higher contrast or saturation are applied when shooting, pixel values in each channel are limited by chopping off highs and lows, which cannot be recovered.
 
 When this information is retained, applying a curve during color grading lets you re-distribute shadows and highlights and apply your own limiting to cut off values that contain more noise and retain values with detail.
 
-I use the Lumetri Color plug-in for color grading and toggle the following transforms in different combinations to determine if they are needed and compare side-by-side:
+I use the Lumetri Color plug-in for color grading and toggle the following transforms in different combinations to determine if they are needed, comparing side-by-side:
 
 * **Exposure**: This can be pushed to increase the richness of shadows, but then it would require more de-noising which blurs details.
 * **Contrast**: This can be used along with Curves to tune the overall contrast. It adds an S-curve over the entire spectrum, with the sharpness of the "S" controlled with this slider. That extra curve is then mixed in with the master Curve.
@@ -157,7 +157,7 @@ I use the Lumetri Color plug-in for color grading and toggle the following trans
 
 ### Warping
 
-Choosing the "initial" view seen by the viewer before they rotate the screen is accomplished by warping, or re-mapping the pixels across the video sphere.
+Choosing the initial view seen by the viewer before they rotate the screen is accomplished by warping, or re-mapping the pixels across the video sphere.
 
 This operation should be done in the Stitching phase to save time, but the Insta 360 Stitcher doesn't allow specifying precise values in degrees so I have to do this with the VR Rotate Sphere plug-in as part of the first transcoding pass.
 
@@ -187,11 +187,11 @@ This pass applies a de-noising algorithm and reduces the resolution down to 4K.
 
 I use either Red Giant Denoiser III which has a built-in re-sharpening pass, or a combination of Neat Video Reduce Noise v4 and Boris FX VR Sharpen.
 
-When using **Denoiser III** plug-in, I often turn off the re-sharpening pass and set other settings lower to reduce noise on light halos and make everything look smoother without increasing noise. This usually blurs details like tiny patterns on people's clothing, but I find it's more important for the video to look smoother than have noisy details. If the video was well lit, I can usually get away with a small amount of re-sharpening as in that case it enhances details but does not add noise.
+When using **Denoiser III** plug-in, I often turn off the re-sharpening pass and set other settings lower to reduce noise on light halos and make everything look smoother without increasing noise. If the video was well lit or doesn't have many smooth gradients like light halos, I can usually get away with a small amount of re-sharpening.
 
 When using **Reduce Noise** plug-in, I select an area with the most noise (and preferrably, nothing but noise) and use the automatic profile analysis to let the plug-in decide what to do. The results are always great, although this plug-in often takes more time to process than Denoiser III.
 
-Remember that the last step is re-sampling down to 4K, which will increase the sharpness slightly, so a re-sharpen pass is not necessarily required. If I do apply de-noising, Boris FX VR Sharpen is a great option.
+Remember that the last step is re-sampling down to 4K, which will increase the sharpness slightly, so a re-sharpening pass is not always required. Otherwise, Boris FX VR Sharpen is a great option.
 
 ### Re-sampling
 
@@ -207,15 +207,63 @@ The result of de-noising is re-sampled to a 4K PNG sequence:
 |Include Alpha Channel|off|
 |Use Maximum Render Quality|on|
 
-Most devices at this time can only play 4K 360 footage smoothly with a 45 Mbps bit rate. Anything higher will increase the number of people who can't watch the video or get a laggy experience.
+Most devices at this time can only play 4K 360 video smoothly at a 45 Mbps bit rate, which is a limitation of the average Internet speed. Anything higher will increase the number of people who can't watch the video or get a laggy experience.
 
 ## Animating Titles
 
+I try to give each video a personal touch by animating custom titles with Blender or Adobe After Effects.
 
+### 2D Titles
+
+AfterEffects comes with a VR Comp Editor plug-in which projects a portion of the video sphere onto a 1920x1080 rectangle, lets you add some text and animated effects, and then re-projects it back onto the video sphere, blending it in with original footage.
+
+I have a few simple rules for animating 2D titles with AfterEffects:
+* Use carefully picked fonts that enhance the artist's branding, or find the same font they are already using. I spend a lot of time on the side looking for quality fonts so that I don't have to struggle at this stage.
+* Stay within the square safe area displayed in Adobe Premiere VR mode. This will end up being the cropping area when the video is shown in a Facebook post.
+* Use cubic easing curves with extreme "ease" toward the end of the motion range to create a feeling of luxury. When something moves slow, it has a lot of time. Time is a resource, therefore that which moves slow is "rich" in that resource, creating a feeling of luxury.
+* Prefer a small range of movement combined with a large range of fading to accentuate the extreme easing. This is inspired by a trendy web animation style on sites like Dribbble and UpLabs.
+* Use vector masking effects, like drawing a rectangular or custom-shaped mask around each letter and animating each mask to have the letters appear in sequence.
+* Use blending effects, by duplicating the text several times and setting a different blending mode on each copy.
+* Use raster masking effects, like taking a portion of footage from a random time and place in the video, masking it by the shape of the text, and scrolling it through the text with a blending mode that produces a nice effect. I often create several layers of this, scrolling different parts of the footage and various time ranges through the text, each with a different blending mode.
+
+### 3D Titles
+
+To render 3D titles with Blender, I use the Cycles rendering engine which supports outputting to the same equirectangular format as VR video:
+
+|Setting|Value|
+|-------|-----|
+|Engine|Cycles|
+|Camera Lens|Panoramic|
+|Camera Lens Type|Equirectangular|
+|Resolution X|4096|
+|Resolution Y|2048|
+|Frame Rate|30 fps|
+|Samples|512|
+|World Surface|Emission|
+|World Surface Color|Environment Texture|
+|World Surface Color Image|(Choose a frame from the video)|
+
+With above World settings any 3D objects placed in the scene will be lit by lights and ambient reflections in the video. That way I don't have to setup virtual lights and match them to the lighting in the video, and any shiny objects will actually reflect the scene in the video.
 
 ## Encoding 360 video
 
+I import both transcoding passes into project bins labeled `transcode 5.2K` and `transcode 4K` and create the `final` sequence from the second transcode. Then I add the previously rendered audio and layer the titles over the first 7-10 seconds of the video. I also add any additional fading and effects to blend the titles into the video, and fade the video out at the end (or use some other VR effects to glitch it into nothing).
+
+|Setting|Value|
+|-------|-----|
+|Encoding|H.264|
+|Width|4096|
+|Height|2048|
+|Render at Maximum Depth|on|
+|Use Maximum Render Quality|off|
+
 ## Encoding flat video
+
+360 videos cannot be posted on Instagram or displayed on some older computers, so sometimes I render a regular HD video from the first transcoding pass. If it's for instagram, it only needs to be 30 seconds long.
+
+To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and a 2D Edit where the titles were animated in the first place. If the titles where 3D, I have to duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
+
+I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, and choose a better camera rotation if necessary, since viewers will no longer be able to rotate the camera. The 2D titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in as I used in the second transcode pass, but this time to a 2D composition. I use the Facebook HD preset (1920x1080O) to encode the final flat video.
 
 ## Uploading
 
