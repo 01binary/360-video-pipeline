@@ -108,7 +108,7 @@ After starting the batch stitching process I switch tabs to "Pro 2 File Manager"
 
 ## Mixing and Mastering Audio
 
-I work on the sound next as any performance should be enjoyable just by listening like it was on a radio:
+I work on the sound next as any performance should be enjoyable just by listening:
 
 * Create a new Premiere Pro project.
 * Import stitched footage and place into "stitch" bin.
@@ -140,11 +140,13 @@ In this pass I perform color grading, rotate the camera, and re-sample the resul
 
 ### Color Grading
 
-I shoot in Flat Color mode with lower contrast and neutral settings to retain detail in colors and shadows. If a higher contrast or saturation are applied when shooting, pixel values in each channel are limited by chopping off highs and lows, which cannot be recovered.
+When using the **camera settings** listed in the previous section (Brightness 0, Contrast 64) color grading is not required unless the Contrast is reduced to a lower value. A slight increase in Vibrance is enough in most cases.
+
+I shoot in Flat Color mode with neutral settings to retain detail in colors and shadows. If a higher contrast or saturation are applied when shooting, pixel values in each channel are limited by chopping off highs and lows, which cannot be recovered.
 
 When this information is retained, applying a curve during color grading lets you re-distribute shadows and highlights and apply your own limiting to cut off values that contain more noise and retain values with detail.
 
-I toggle the following transforms in different combinations to determine if they are needed and compare side-by-side:
+I use the Lumetri Color plug-in for color grading and toggle the following transforms in different combinations to determine if they are needed and compare side-by-side:
 
 * **Exposure**: This can be pushed to increase the richness of shadows, but then it would require more de-noising which blurs details.
 * **Contrast**: This can be used along with Curves to tune the overall contrast. It adds an S-curve over the entire spectrum, with the sharpness of the "S" controlled with this slider. That extra curve is then mixed in with the master Curve.
@@ -153,21 +155,63 @@ I toggle the following transforms in different combinations to determine if they
 * **White balance**: A proper white balance often ruins the mood established by colored lighting, so I would only apply this if the main lights in the scene are tungsten or daylight balanced.
 * **Curve**: The master color grading curve. I don't mess with curves for each channel because that's equivalent to adjusting the white balance, however adjusting the channel curves is a great surgical substitute for the White Balance picker. When color grading Flat Color footage, the Master curve will resemble an "S" shape that re-maps the flat color distribution back into realistic colors, letting you choose how much contrast you want to bring back, and how you want to distribute shadows and highlights.
 
-Note that with the **camera settings** listed in the previous section (Brightness 0, Contrast 64), unless you reduce Contrast further to capture more dynamic range it's unlikely that any color grading will be required other than bumping up Vibrance.
-
 ### Warping
 
-Choosing the "initial" view seen by the viewer before they rotate the screen is accomplished by warping, or re-mapping the pixels across the video sphere. This operation should be done in the Stitching phase, but the Insta 360 Stitcher does not let you specify precise values in degrees so I have to do this with the VR Rotate Sphere plug-in as part of the first transcoding pass.
+Choosing the "initial" view seen by the viewer before they rotate the screen is accomplished by warping, or re-mapping the pixels across the video sphere.
+
+This operation should be done in the Stitching phase to save time, but the Insta 360 Stitcher doesn't allow specifying precise values in degrees so I have to do this with the VR Rotate Sphere plug-in as part of the first transcoding pass.
+
+The view should only be panned and never pitched or rolled unless you have to correct for a slanted tripod. Applying pitch will break the panning motion, because most viewers would expect to turn side-to-side to look left and right, but pitched footage will turn up and down at the same time. This ruins the experience of looking around in the 360 video.
 
 ### Re-sampling
+
+The result of color grading and warping is rendered to a 5.2K PNG sequence:
+
+|Setting|Value|
+|-------|-----|
+|Format|PNG|
+|Width|5120|
+|Height|2560|
+|Export As Sequence|on|
+|Render at Maximum Depth|on|
+|Include Alpha Channel|off|
+|Use Maximum Render Quality|on|
+
+I use 5.2K instead of 6K (another popular resolution for 360 video) because consumer cameras like GoPro Fusion, YI360, and Insta360 One support at least 5.2K, making it possible to pipe in footage from secondary cameras at this stage and morph from one to another.
 
 ## Transcoding - Second Pass
 
+This pass applies a de-noising algorithm and reduces the resolution down to 4K.
+
 ### De-noising
+
+I use either Red Giant Denoiser III which has a built-in re-sharpening pass, or a combination of Neat Video Reduce Noise v4 and Boris FX VR Sharpen.
+
+When using **Denoiser III** plug-in, I often turn off the re-sharpening pass and set other settings lower to reduce noise on light halos and make everything look smoother without increasing noise. This usually blurs details like tiny patterns on people's clothing, but I find it's more important for the video to look smoother than have noisy details. If the video was well lit, I can usually get away with a small amount of re-sharpening as in that case it enhances details but does not add noise.
+
+When using **Reduce Noise** plug-in, I select an area with the most noise (and preferrably, nothing but noise) and use the automatic profile analysis to let the plug-in decide what to do. The results are always great, although this plug-in often takes more time to process than Denoiser III.
+
+Remember that the last step is re-sampling down to 4K, which will increase the sharpness slightly, so a re-sharpen pass is not necessarily required. If I do apply de-noising, Boris FX VR Sharpen is a great option.
 
 ### Re-sampling
 
+The result of de-noising is re-sampled to a 4K PNG sequence:
+
+|Setting|Value|
+|-------|-----|
+|Format|PNG|
+|Width|4096|
+|Height|2048|
+|Export As Sequence|on|
+|Render at Maximum Depth|on|
+|Include Alpha Channel|off|
+|Use Maximum Render Quality|on|
+
+Most devices at this time can only play 4K 360 footage smoothly with a 45 Mbps bit rate. Anything higher will increase the number of people who can't watch the video or get a laggy experience.
+
 ## Animating Titles
+
+
 
 ## Encoding 360 video
 
