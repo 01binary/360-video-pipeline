@@ -373,6 +373,6 @@ Working with 8K footage and using de-noising plug-ins requires a computer that b
 
 `Transcoding` drives would benefit from 4 TB of space instead of 2 TB but I was limited by my budget. That means I am forced to transcode to PNGs, which doubles the time it takes to render each project.
 
-`GPU` is used for rendering 3D Titles in Blender and does not affect encoding or transcoding speeds. If you don't need this capability, GPU can be downgraded. If you render long and complex 3D special effects, the GPU can be upgraded to [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
+`GPU` is used for rendering 3D Titles in Blender and does not affect encoding or transcoding performance. If you don't need this capability, GPU can be downgraded. If you render long and complex 3D special effects, the GPU can be upgraded to [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
 
 The `Fractal Design` case has an amazing silent performance that lets me leave it running constantly. I believe this is the closest you can get to an iMac Pro workstation in terms of noise output.
