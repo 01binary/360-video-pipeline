@@ -1,8 +1,6 @@
 # My 360 Video Pipeline
 
-I got my first 360 camera to record a [vlog about making the exoskeleton from Elysium](https://hackaday.io/project/19830-elysium-max-exoskeleton), but quickly realized the medium's potential and set out to capture as many experiences as possible.
-
-To complete my first project, a 45-minute show of my favorite local band, I had to build a 360 video pipeline along with a render farm.
+I got my first 360 camera to record a [vlog about making the exoskeleton from Elysium](https://hackaday.io/project/19830-elysium-max-exoskeleton), but quickly realized the medium's potential and set out to capture as many experiences as possible. To complete my first project, a 45-minute show of my favorite local band, I had to build a 360 video pipeline along with a render farm.
 
 ## Overview
 
@@ -265,7 +263,7 @@ I worked on 3D titles for the following videos:
 
 ## Encoding 360 Video
 
-I import both transcoding passes into project bins labeled `transcode 5.2K` and `transcode 4K` and create the `final` sequence from the second transcode. Then I add the previously rendered audio and layer the titles (imported into `titles` bin as `titles-360`) over the first 7-10 seconds of the video. I also add any additional fading and effects to blend the titles into the video and fade the video out at the end.
+I import both transcoding passes into project bins labeled `transcode 5.2K` and `transcode 4K` and create the `final` sequence at the root of the project from the second transcode. Then I add the previously rendered audio and layer the titles (imported into `titles` bin as `titles-360`) over the first 7-10 seconds of the video. I also add any additional fading and effects to blend the titles into the video and fade the video out at the end.
 
 |Setting|Value|
 |-------|-----|
