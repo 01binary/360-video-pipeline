@@ -363,7 +363,7 @@ Working with 8K footage and using de-noising plug-ins requires a computer that b
 |Motherboard|[ASUS ROG Rampage VI Extreme Omega X299-II](https://www.amazon.com/ROG-Rampage-VI-Extreme-Motherboard/dp/B07MBJ6N9D)|
 |Memory|2x [G.SKILL Trident Z 16GB 288-Pin RGB DDR4 4266](https://www.amazon.com/G-SKILL-Trident-Royal-288-Pin-F4-4266C19D-16GTRG/dp/B07LD5S9V2)|
 |HD1 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F)|
-|HD2 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F)|
+|HD2 (Transcoding)|[Samsung 970 EVO 2TB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/Samsung-970-EVO-2TB-MZ-V7E2T0BW/dp/B07C8Y31G1)|
 |HD3 (Cache)|[Samsung 970 EVO 2TB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/Samsung-970-EVO-2TB-MZ-V7E2T0BW/dp/B07C8Y31G1)|
 |HD4 (System)|[Samsung 860 PRO V-NAND 1TB SSD](https://www.amazon.com/Samsung-V-NAND-MZ-76P1T0BW-Solid-State/dp/B078211KCN)|
 |Power Supply|[EVGA SuperNOVA TITANIUM 1600W](https://www.amazon.com/gp/product/B00R33ZBQU)|
