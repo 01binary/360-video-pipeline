@@ -357,10 +357,10 @@ Working with 8K footage and using de-noising plug-ins requires a computer that b
 |Spec|Choice|
 |----|------|
 |CPU|[Intel Core i9-9980XE](https://www.amazon.com/Intel-i9-9980XE-Processor-Processors-999AD1/dp/B07JGCMQY8)|
-|GPU|[NVIDIA TITAN Xp](https://www.amazon.com/gp/product/B0757DSD6D)|
+|GPU|[NVIDIA Titan Xp](https://www.amazon.com/gp/product/B0757DSD6D)|
 |Motherboard|[ASUS ROG Rampage VI Extreme Omega X299-II](https://www.amazon.com/ROG-Rampage-VI-Extreme-Motherboard/dp/B07MBJ6N9D)|
 |Memory|2x [G.SKILL Trident Z 16GB 288-Pin RGB DDR4 4266](https://www.amazon.com/G-SKILL-Trident-Royal-288-Pin-F4-4266C19D-16GTRG/dp/B07LD5S9V2)|
-|HD1 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F)|
+|HD1 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F) (only one fits on the motherboard)|
 |HD2 (Transcoding)|[Samsung 970 EVO 2TB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/Samsung-970-EVO-2TB-MZ-V7E2T0BW/dp/B07C8Y31G1)|
 |HD3 (Cache)|[Samsung 970 EVO 2TB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/Samsung-970-EVO-2TB-MZ-V7E2T0BW/dp/B07C8Y31G1)|
 |HD4 (System)|[Samsung 860 PRO V-NAND 1TB SSD](https://www.amazon.com/Samsung-V-NAND-MZ-76P1T0BW-Solid-State/dp/B078211KCN)|
@@ -371,6 +371,6 @@ Working with 8K footage and using de-noising plug-ins requires a computer that b
 
 `Transcoding` drives would benefit from 4 TB of space instead of 2 TB but I was limited by my budget. That means I am forced to transcode to PNGs, which doubles the time it takes to render each project.
 
-`GPU` is used for rendering 3D Titles in Blender and does not affect encoding or transcoding performance. If you don't need this capability, GPU can be downgraded. If you render long and complex 3D special effects, the GPU can be upgraded to [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
+`GPU` is used to render 3D Titles in Blender and does not affect the transcoding performance. If you don't need this capability, GPU can be downgraded. If you render complex 3D effects, the GPU can be upgraded to [NVIDIA Titan Rtx](https://www.amazon.com/NVIDIA-Titan-RTX-Graphics-Card/dp/B07L8YGDL5) or [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
 
 The `Fractal Design` case has an amazing silent performance that lets me leave it running constantly. I believe this is the closest you can get to an iMac Pro workstation in terms of noise output.
