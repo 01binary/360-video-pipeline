@@ -354,19 +354,25 @@ Also see [steps for sharing files publically](https://www.appypie.com/faqs/how-c
 
 ## Building a Render Farm
 
-Working with 8K footage and using de-noising plug-ins requires a computer with high CPU, memory, and storage speeds, in addition to memory and drive space.
-
-At the time of writing this article, the fastest iMac Pro was slower than the fastest Windows workstation, so I built the best over-clocked Windows machine I could.
+Working with 8K footage and using de-noising plug-ins requires a computer that balances overall performance with storage capacity. The table below lists newer components than the ones available when I was building the workstation because they perform better for the same price:
 
 |Spec|Choice|
 |----|------|
-|CPU||
-|Motherboard||
-|Memory||
-|HD1 (Transcoding)||
-|HD2 (Transcoding)||
-|HD3 (Cache)||
-|HD4 (System)||
-|Power Supply||
-|Heat Sink||
-|Case||
+|CPU|[Intel Core i9-9980XE](https://www.amazon.com/Intel-i9-9980XE-Processor-Processors-999AD1/dp/B07JGCMQY8)|
+|GPU|[NVIDIA TITAN Xp](https://www.amazon.com/gp/product/B0757DSD6D)|
+|Motherboard|[ASUS ROG Rampage VI Extreme Omega X299-II](https://www.amazon.com/ROG-Rampage-VI-Extreme-Motherboard/dp/B07MBJ6N9D)|
+|Memory|2x [G.SKILL Trident Z 16GB 288-Pin RGB DDR4 4266](https://www.amazon.com/G-SKILL-Trident-Royal-288-Pin-F4-4266C19D-16GTRG/dp/B07LD5S9V2)|
+|HD1 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F)|
+|HD2 (Transcoding)|[HighPoint rSSD7101B 2TB NVMe RAID Drive](https://www.amazon.com/gp/product/B077SNV26F)|
+|HD3 (Cache)|[Samsung 970 EVO 2TB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/Samsung-970-EVO-2TB-MZ-V7E2T0BW/dp/B07C8Y31G1)|
+|HD4 (System)|[Samsung 860 PRO V-NAND 1TB SSD](https://www.amazon.com/Samsung-V-NAND-MZ-76P1T0BW-Solid-State/dp/B078211KCN)|
+|Power Supply|[EVGA SuperNOVA TITANIUM 1600W](https://www.amazon.com/gp/product/B00R33ZBQU)|
+|CPU Cooler|[ARCTIC Liquid Freezer 240](https://www.amazon.com/ARCTIC-Liquid-Freezer-240-Performance/dp/B013WAY9UQ) (fans swapped for Noctua below)|
+|Case Fans|[Noctua NF-S12B Redux Quiet Case Fan](https://www.quietpcusa.com/Noctua-NF-S12B-redux-700-120mm-Quiet-Case-Fan--P1065.aspx)|
+|Case|[Fractal Design ATX Silent Mid Tower Case](https://www.newegg.com/Product/Product.aspx?Item=N82E16811352092)|
+
+`Transcoding` drives would benefit from 4 TB of space instead of 2 TB but I was limited by my budget. That means I am forced to transcode to PNGs, which doubles the time it takes to render each project.
+
+`GPU` is used for rendering 3D Titles in Blender and does not affect encoding or transcoding speeds. If you don't need this capability, GPU can be downgraded. If you render long and complex 3D special effects, the GPU can be upgraded to [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
+
+The `Fractal Design` case has an amazing silent performance that lets me leave it running constantly. I believe this is the closest you can get to an iMac Pro workstation in terms of noise output.
