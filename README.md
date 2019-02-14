@@ -113,7 +113,7 @@ I use Adobe Premiere Pro because I also need Photoshop and Illustrator so it's m
 * Create a new sequence from this footage.
 * Clip the footage to the exact beginning of the performance, and leave a few seconds after the performance to capture applause and the performer(s) thanking the audience.
 
-I never cut in the middle when recording performances, unless it's a reel for Instagram - see **Encoding Flat Video** section for more information about that.
+I never cut in the middle when recording performances, unless it's a reel for Instagram - see **Encoding Projected Video** section for more information about that.
 
 ## Mixing and Mastering Audio
 
@@ -160,7 +160,7 @@ I use the [Lumetri Color plug-in](https://helpx.adobe.com/premiere-pro/using/col
 * **Shadows**: Just like Contrast, this control is a shortcut that can be used to control the amplitude of shadow frequencies in the image without making a complex Curve. This creates a curve with a dip or a peak on shadows and mixes it in with the Contrast and Master curves.
 * **Vibrance**: I usually increase this to around 16 to enhance colored lights. Spot-check your footage for any places where this might blow out colored highlights. I don't use this setting for scenes without colored lights due to its "compress and apply makeup gain" effect that pulls out highly visible, animated noise.
 * **White balance**: A proper white balance often ruins the mood established by colored lighting, so I would only apply this if the main lights in the scene are tungsten or daylight balanced.
-* **Curve**: The master color grading curve. I don't mess with curves for each channel because that's equivalent to adjusting the white balance, however adjusting the channel curves is a great surgical substitute for the White Balance picker. When color grading Flat Color footage, the Master curve will resemble an "S" shape that re-maps the flat color distribution back into realistic colors, letting you choose how much contrast you want to bring back, and how you want to distribute shadows and highlights.
+* **Curve**: The master color grading curve. I don't mess with curves for each channel because that's equivalent to adjusting the white balance, however adjusting the channel curves is a great surgical substitute for the White Balance picker. When color grading flat color footage, the Master curve will resemble an "S" shape that re-maps the flat color distribution back into realistic colors, letting you choose how much contrast you want to bring back, and how you want to distribute shadows and highlights.
 
 ### Warping
 
@@ -284,17 +284,15 @@ I import both transcoding passes into project bins labeled `transcode 5.2K` and 
 |Vertical Field of View|180|
 |Use Maximum Render Quality|off|
 
-## Encoding Flat Video
+## Encoding Projected Video
 
-360 videos cannot be posted on Instagram or displayed in older browsers, so sometimes I render a flat HD video from the first transcoding pass.
-
-To render a projected view of the video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and the original 2D Edit from AfterEffects where the titles were animated.
+360 videos cannot be posted on Instagram or displayed in older browsers. To render a projected view of the 360 video, I import the transcoded 5.2K footage into AfterEffects, then add the audio rendered from Premiere, and the original 2D Edit from AfterEffects where the titles were animated.
 
 If the titles were 3D, I duplicate the Blender file and change the camera back to a regular 2D camera, setting the output resolution to 1920x1080 and re-rendering.
 
 I use the same VR Comp Editor plug-in to add a 2D Edit on the transcoded video, and choose a better camera rotation if necessary, since viewers will no longer be able to rotate the camera.
 
-The titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in(s) as I used in the second transcoding pass, but this time to a 2D composition. I use the Facebook HD preset (1920x1080O) to encode the final flat video.
+The titles and rendered audio go into the 2D Edit comp, then I can re-create any effects necessary to blend titles into the video and to fade the video out. Lastly I apply the same de-noiser plug-in(s) as I used in the second transcoding pass, but this time to the 2D composition. I use the Facebook HD preset to encode the projected video:
 
 |Setting|Value|
 |-------|-----|
