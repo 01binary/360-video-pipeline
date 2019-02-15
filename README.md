@@ -12,7 +12,7 @@ I got my first 360 camera to record a [vlog about making the exoskeleton from El
 * Transcode 2: De-noise, Re-sharpen, Re-sample
 * Animate Titles
 * Encode 360
-* Encode 2D
+* Encode Projected
 * Upload
 
 ## Equipment
@@ -372,5 +372,3 @@ Working with 8K footage and using de-noising plug-ins requires a computer that b
 `Transcoding` drives would benefit from 4 TB of space instead of 2 TB but I was limited by my budget. That means I am forced to transcode to PNGs, which doubles the time it takes to render each project.
 
 `GPU` is used to render 3D Titles in Blender and does not affect the transcoding performance. If you don't need this capability, GPU can be downgraded. If you render complex 3D effects, the GPU can be upgraded to [NVIDIA Titan Rtx](https://www.amazon.com/NVIDIA-Titan-RTX-Graphics-Card/dp/B07L8YGDL5) or [NVIDIA Quadro P6000](https://www.amazon.com/PNY-Quadro-P6000-Graphic-Card/dp/B01M0S2FKR).
-
-The `Fractal Design` case has an amazing silent performance that lets me leave it running constantly. I believe this is the closest you can get to an iMac Pro workstation in terms of noise output.
