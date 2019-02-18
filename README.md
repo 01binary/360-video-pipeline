@@ -4,16 +4,7 @@ I got my first 360 camera to record a [vlog about making the exoskeleton from El
 
 ## Overview
 
-(static illustration)
-* Capture
-* Stitch
-* Mix & Master Audio
-* Transcode 1: Color Grade, Warp, Re-sample
-* Transcode 2: De-noise, Re-sharpen, Re-sample
-* Animate Titles
-* Encode 360
-* Encode Projected
-* Upload
+![360 vide pipeline](pipeline.gif)
 
 ## Equipment
 
