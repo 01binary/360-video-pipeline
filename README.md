@@ -1,6 +1,6 @@
 # My 360 Video Pipeline
 
-360 videography is an exciting but new field, with little information available for advanced users. I hope to help other aspiring 360 videographers avoid the trial and error I experienced when building a video processing pipeline along with a render farm to handle large projects.
+360 videography is an exciting but new field, with little information available for advanced users. I hope to help other aspiring videographers avoid the trial and error I experienced when building a video processing pipeline along with a render farm to handle large projects.
 
 I got my first 360 camera to record a [vlog about making a replica of the exoskeleton from Elysium](https://hackaday.io/project/19830-elysium-max-exoskeleton), but quickly realized the medium's potential and set out to capture as many experiences as possible. One of these projects was a 45-minute show of my favorite local band. Bringing this project to completion required more planning and equipment than I expected. The information below helped me to bridge this gap.
 
