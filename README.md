@@ -6,7 +6,7 @@ I got my first 360 camera to record a [vlog about making a replica of the exoske
 
 ## Overview
 
-![360 vide pipeline](pipeline.gif)
+![360 vide pipeline](pipeline.png)
 
 ## Equipment
 
